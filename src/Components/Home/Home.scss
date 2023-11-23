@@ -1,0 +1,133 @@
+#home {
+  margin: 80px 150px;
+  .home-card {
+    border: 0;
+
+    .main-img {
+      border: 10px solid var(--lightgrey);
+      width: 380px;
+      height: 380px;
+      object-fit: cover;
+      transform: rotate(0deg);
+      border-radius: 100%;
+
+      // animation: rotate 15s linear infinite forwards;
+    }
+    @keyframes rotate {
+      0% {
+        border-radius: 39% 61% 44% 56% / 54% 37% 63% 46%;
+      }
+      100% {
+        transform: rotateZ(360deg);
+        border-radius: 39% 61% 44% 56% / 54% 37% 63% 46%;
+      }
+    }
+  }
+  .btn-portfolio {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px 30px;
+    font-size: 25px;
+    font-weight: 600;
+    margin-right: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    &:hover {
+      background-color: var(--orange);
+      transition: 0.3s linear;
+      color: var(--white);
+    }
+  }
+  .active-home {
+    background-color: var(--orange);
+    transition: 0.3s linear;
+    color: var(--white);
+  }
+  @mixin transition($property: all, $duration: 0.45s, $ease: cubic-bezier(0.65, 0, 0.076, 1)) {
+    transition: $property $duration $ease;
+  }
+
+  button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    &.learn-more {
+      width: 12rem;
+      height: auto;
+      .circle {
+        @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
+        position: relative;
+        display: block;
+        margin: 0;
+        width: 2.8rem;
+        height: 2.8rem;
+        border: 3px solid var(--orange);
+        border-radius: 1.625rem;
+      }
+      .button-text {
+        @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
+        position: absolute;
+        top: 0px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.75rem 0;
+        margin: 0 0 0 1.85rem;
+        color: red !important;
+        font-weight: 700;
+        line-height: 1.6;
+        font-size: 13px;
+        background-color: transparent;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+    &:hover {
+      .circle {
+        width: 100%;
+        .icon {
+          &.arrow {
+            transform: translate(1rem, 0);
+          }
+        }
+      }
+      .button-text {
+        color: var(--dark);
+        margin-left: -3px;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
+  #home {
+    margin: 0 20px;
+    .home-card {
+      .main-img {
+        width: 250px;
+        height: 250px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  #home {
+    margin: 0 20px;
+    .home-card {
+      .main-img {
+        width: 300px;
+        height: 300px;
+        margin-top: -20px;
+      }
+    }
+  }
+}
